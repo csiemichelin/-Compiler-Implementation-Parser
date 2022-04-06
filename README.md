@@ -6,6 +6,9 @@
 ## 環境設置與使用方法
 **1. 環境設置**  
 **2. 使用方法**  
+&emsp;&emsp;<img src="https://github.com/csiemichelin/Implementation-of-a-Lexical-Analyzer/blob/main/flex.PNG" width="500" height="250">    
+&emsp;&emsp;根據以上圖示去執行但這裡使用makefile簡化步驟，只要在terminal上輸入```make```即可。
+
 ## 介紹
 **1.** In this assignment you are requested to use the tool Bison to write an LALR(1) parser for the small language Sunflower. The grammar for the small language Sunflower is as follows:  
 &emsp;program → **Program Identifier Begin** declarations statements **End** 

@@ -17,7 +17,7 @@
 &emsp;&emsp;| **While** booleanExpression **Do** statements **EndWhile**  
 &emsp;&emsp;| **Read Identifier**  
 &emsp;&emsp;| **Write** arithmeticExpression   
-&emsp;| **Exit**   
+&emsp;&emsp;| **Exit**   
 &emsp;booleanExpression → booleanExpression **Or** booleanTerm   
 &emsp;&emsp;| booleanTerm   
 &emsp;booleanTerm → booleanTerm **And** booleanFactor   

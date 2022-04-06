@@ -37,4 +37,135 @@
 &emsp;&emsp;| arithmeticTerm **%** arithmeticFactor   
 &emsp;&emsp;| arithmeticFactor   
 &emsp;arithmeticFactor → **-** arithmeticFactor | primaryExpression  
-&emsp;primaryExpression → **IntConst** | **Identifier** | ( arithmeticExpression )
+&emsp;primaryExpression → **IntConst** | **Identifier** | ( arithmeticExpression )  
+
+**2.** The parser needs to parse a program written in **Sunflower** defined above. The parser should be able to trace the parsing process by using the option “-p” to print each production reduced by the parser. The format for printing productions is as follows:  
+&emsp;No syntax error recovery is needed. Each syntax error message should include the line number where the error is detected. The format of the error message is as follows:  
+&emsp;Syntax error: line %d  
+
+## Demo
+**1.**  
+**Input : test1.txt**
+``` 
+// A program to sum 1 to n 
+Program sum Begin 
+    Var    n 
+    Var    s 
+ 
+    Read n 
+    If n < 0 Then 
+        Write -1 
+        Exit 
+    Else 
+        Set s = 0 
+    EndIf 
+    While n > 0 Do 
+        Set s = s + n 
+        Set n = n – 1 
+    EndWhile 
+    Write s 
+End
+```
+**Output**
+The stdout output of test1 using –p option is as follows:  
+declarations -> empty  
+declarations -> declarations Var Identifier   
+declarations -> declarations Var Identifier   
+statements -> empty   
+statement -> Read Identifier   
+statements -> statements statement      
+primaryExpression -> Identifier   
+arithmeticFactor -> primaryExpression   
+arithmeticTerm -> arithmeticFactor    
+arithmeticExpression -> arithmeticTerm     
+primaryExpression -> IntConst      
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor    
+arithmeticExpression -> arithmeticTerm      
+relationExpression -> arithmeticExpression < arithmeticExpression     
+booleanFactor -> relationExpression      
+booleanTerm -> booleanFactor        
+booleanExpression -> booleanTerm       
+statements -> empty       
+primaryExpression -> IntConst     
+arithmeticFactor -> primaryExpression    
+arithmeticFactor -> - arithmeticFactor    
+arithmeticTerm -> arithmeticFactor     
+arithmeticExpression -> arithmeticTerm      
+statement -> Write arithmeticExpression     
+statements -> statements statement     
+statement -> Exit    
+statements -> statements statement    
+statements -> empty     
+primaryExpression -> IntConst    
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor     
+arithmeticExpression -> arithmeticTerm     
+statement -> Set Identifier = arithmeticExpression    
+statements -> statements statement     
+statement -> If booleanExpression Then statements Else statements EndIf    
+statements -> statements statement    
+primaryExpression -> Identifier   
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor   
+arithmeticExpression -> arithmeticTerm     
+primaryExpression -> IntConst    
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor    
+arithmeticExpression -> arithmeticTerm    
+relationExpression -> arithmeticExpression > arithmeticExpression     
+booleanFactor -> relationExpression    
+booleanTerm -> booleanFactor    
+booleanExpression -> booleanTerm    
+statements -> empty    
+primaryExpression -> Identifier    
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor   
+arithmeticExpression -> arithmeticTerm    
+primaryExpression -> Identifier    
+arithmeticFactor -> primaryExpression     
+arithmeticTerm -> arithmeticFactor     
+arithmeticExpression -> arithmeticExpression + arithmeticTerm     
+statement -> Set Identifier = arithmeticExpression     
+statements -> statements statement     
+primaryExpression -> Identifier     
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor    
+arithmeticExpression -> arithmeticTerm     
+primaryExpression -> IntConst     
+arithmeticFactor -> primaryExpression    
+arithmeticTerm -> arithmeticFactor     
+arithmeticExpression -> arithmeticExpression - arithmeticTerm     
+statement -> Set Identifier = arithmeticExpression    
+statements -> statements statement     
+statement -> While booleanExpression Do statements EndWhile    
+statements -> statements statement      
+primaryExpression -> Identifier      
+arithmeticFactor -> primaryExpression     
+arithmeticTerm -> arithmeticFactor    
+arithmeticExpression -> arithmeticTerm      
+statement -> Write arithmeticExpression     
+statements -> statements statement     
+program -> Program Identifier Begin declarations statements End    
+
+**2.**  
+**Input : test2.txt**  
+```
+// A program to sum 1 to n   
+Program sum Begin 
+End;  
+``` 
+**Output**  
+The stdout output of test2 using –p option is as follows:   
+Syntax error: line 2  
+
+**3.**  
+**Input : test3.txt**  
+```
+// A program to sum 1 to n   
+Program sum Begin 
+end 
+``` 
+**Output**  
+The stdout output of test2 using –p option is as follows:   
+Syntax error: line 3

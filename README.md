@@ -12,7 +12,7 @@
 &emsp;&emsp;&emsp;```sudo apt-get update```      
 &emsp;&emsp;&emsp;```sudo apt-get upgrade```      
 &emsp;&emsp;&emsp;```sudo apt-get install build-essential```        
-&emsp;&emsp;&emsp;```sudo apt-get install libc6-dev``
+&emsp;&emsp;&emsp;```sudo apt-get install libc6-dev``  
 **2. 使用方法**  
 &emsp;&emsp;<img src="https://github.com/csiemichelin/Compiler-Implementation-Parser/blob/main/bison.jpg" width="500" height="250">    
 &emsp;&emsp;根據以上圖示去執行但這裡使用makefile簡化步驟，只要在terminal上輸入```make```即可。
